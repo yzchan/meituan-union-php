@@ -14,6 +14,7 @@ class Link
     const WECHAT = 4;  // 微信小程序Path
 
     private $_client;
+
     public $actId = 0;
     public $sid = '';
     public $linkType = self::H5;

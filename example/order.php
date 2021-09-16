@@ -2,8 +2,8 @@
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
-use \Meituan\Union\Order;
-use \GuzzleHttp\Exception\GuzzleException;
+use Meituan\Union\Order;
+use GuzzleHttp\Exception\GuzzleException;
 
 $client = new Meituan\Union\Client(KEY, SECRET, CALLBACK_SECRET);
 
@@ -21,7 +21,7 @@ try {
     print_r($orders);
 } catch (GuzzleException $e) {
     echo $e->getMessage();
-} catch (\Exception $e) {
+} catch (Exception $e) {
     echo $e->getMessage();
 }
 
@@ -33,11 +33,12 @@ try {
         ->setPage(1)
         ->setLimit(20)
         ->setQueryByPaytime()
-        ->send();
+        //->setQueryByModtime()
+        ->query();
     echo "\nformat params request: \t";
     print_r($orders);
 } catch (GuzzleException $e) {
     echo $e->getMessage();
-} catch (\Exception $e) {
+} catch (Exception $e) {
     echo $e->getMessage();
 }

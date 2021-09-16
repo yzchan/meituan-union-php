@@ -105,11 +105,11 @@ class Order
     }
 
     /**
-     * 发送请求
+     * 发送查询请求
      * @return array
      * @throws GuzzleException|RuntimeException
      */
-    public function send(): array
+    public function query(): array
     {
         return $this->_client->orderList([
             'startTime' => $this->startTime,

@@ -2,8 +2,8 @@
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
-use \Meituan\Union\Link;
-use \GuzzleHttp\Exception\GuzzleException;
+use Meituan\Union\Link;
+use GuzzleHttp\Exception\GuzzleException;
 
 $client = new Meituan\Union\Client(KEY, SECRET, CALLBACK_SECRET);
 
@@ -18,7 +18,7 @@ try {
     print_r($link);
 } catch (GuzzleException $e) {
     echo $e->getMessage();
-} catch (\Exception $e) {
+} catch (Exception $e) {
     echo $e->getMessage();
 }
 
@@ -33,6 +33,6 @@ try {
     print_r($link);
 } catch (GuzzleException $e) {
     echo $e->getMessage();
-} catch (\Exception $e) {
+} catch (Exception $e) {
     echo $e->getMessage();
 }

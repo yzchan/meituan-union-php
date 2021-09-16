@@ -83,13 +83,8 @@ class Client
      */
     function orderList(array $params): array
     {
-        $url = GATEWAY . '/api/orderList';
-
-        $params = array_merge([
-            'key' => $this->key,
-            'ts' => (string)time(),
-        ], $params);
-        return $this->_request($url, $params);
+        $params['ts'] = time();
+        return $this->_request(GATEWAY . '/api/orderList', $params);
     }
 
     /**
@@ -108,11 +103,7 @@ class Client
      */
     function miniCode(array $params): array
     {
-        $url = GATEWAY . '/miniCode';
-        $params = array_merge([
-            'key' => $this->key,
-        ], $params);
-        return $this->_request($url, $params);
+        return $this->_request(GATEWAY . '/miniCode', $params);
     }
 
     /**
@@ -123,13 +114,12 @@ class Client
      */
     protected function _request(string $url, array $params): array
     {
+        $params['key'] = $this->key;
         $params['sign'] = $this->sign($params);
 
         $client = new GuzzleClient(['http_errors' => false]);
         try {
-            $response = $client->request('get', $url, [
-                'query' => $params
-            ]);
+            $response = $client->request('GET', $url, ['query' => $params]);
         } catch (GuzzleException $e) {
             throw $e;
         }
@@ -140,7 +130,7 @@ class Client
         }
         $data = json_decode($body, true);
         if ($data === false) {
-            throw new RuntimeException("Failed to decode json : " . json_last_error());
+            throw new RuntimeException("json_decode error : " . json_last_error_msg());
         }
 
         return $data;

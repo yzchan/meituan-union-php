@@ -1,4 +1,4 @@
-美团联盟SDK
+美团联盟PHP-SDK
 -----
 
 ## About
@@ -7,12 +7,12 @@
 
 ## Api support
 
-- ✅[订单列表查询（新）](https://union.meituan.com/v2/apiDetail?id=1)
-- ✅[签名(sign)生成逻辑](https://union.meituan.com/v2/apiDetail?id=2)
-- 🔜[订单回推接口](https://union.meituan.com/v2/apiDetail?id=6)
-- ✅[自助取链接口](https://union.meituan.com/v2/apiDetail?id=8)
-- ✅[小程序二维码生成](https://union.meituan.com/v2/apiDetail?id=12)
-- 🔜[商品列表搜索接口（暂时只支持优选业务）](https://union.meituan.com/v2/apiDetail?id=21)
+- ✅ [订单列表查询（新）](https://union.meituan.com/v2/apiDetail?id=1)
+- ✅ [签名(sign)生成逻辑](https://union.meituan.com/v2/apiDetail?id=2)
+- 🔜 [订单回推接口](https://union.meituan.com/v2/apiDetail?id=6)
+- ✅ [自助取链接口](https://union.meituan.com/v2/apiDetail?id=8)
+- ✅ [小程序二维码生成](https://union.meituan.com/v2/apiDetail?id=12)
+- 🔜 [商品列表搜索接口（暂时只支持优选业务）](https://union.meituan.com/v2/apiDetail?id=21)
 
 ## Installation
 
@@ -36,7 +36,7 @@ try {
         ->setPage(1)
         ->setLimit(20)
         ->setQueryByPaytime()
-        ->send();
+        ->query();
     echo "\nformat params request: \t";
     print_r($orders);
 } catch (GuzzleException $e) {

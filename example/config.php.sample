@@ -1,0 +1,8 @@
+<?php
+
+const KEY = '<Your key>';
+const SECRET = '<Your secret>';
+const CALLBACK_SECRET = '<Your callback secret>';
+
+const SID = 'XXX';
+const ACTID = 33;

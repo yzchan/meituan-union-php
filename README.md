@@ -12,12 +12,12 @@
 - 🔜 [订单回推接口](https://union.meituan.com/v2/apiDetail?id=6)
 - ✅ [自助取链接口](https://union.meituan.com/v2/apiDetail?id=8)
 - ✅ [小程序二维码生成](https://union.meituan.com/v2/apiDetail?id=12)
-- 🔜 [商品列表搜索接口（暂时只支持优选业务）](https://union.meituan.com/v2/apiDetail?id=21)
+- ⚠️ [商品列表搜索接口（暂时只支持优选业务）](https://union.meituan.com/v2/apiDetail?id=21) 官方文档有问题，暂时无法查询
 
 ## Installation
 
 ```shell
-composer install yzchan/union-meituan
+composer require yzchan/meituan-union
 ```
 
 ## Quickstart
@@ -27,7 +27,7 @@ require_once "vendor/autoload.php";
 
 use \GuzzleHttp\Exception\GuzzleException;
 
-$client = new Meituan\Union\Client('<KEY>', '<SECRET>', '<CALLBACK_SECRET>');
+$client = new MeituanUnion\Client('<KEY>', '<SECRET>', '<CALLBACK_SECRET>');
 
 try {
     $orders = $client->newOrderRequest()

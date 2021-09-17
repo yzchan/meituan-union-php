@@ -7,7 +7,8 @@ use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 
-const GATEWAY = 'https://runion.meituan.com';
+const GATEWAY_UNION = 'https://runion.meituan.com';
+const GATEWAY_OPENAPI = 'https://openapi.meituan.com';
 
 class Client
 {
@@ -60,7 +61,7 @@ class Client
      */
     public function generateUrl(array $params): array
     {
-        $url = GATEWAY . '/generateLink';
+        $url = GATEWAY_UNION . '/generateLink';
         $params = array_merge([
             'key' => $this->key,
         ], $params);
@@ -75,7 +76,7 @@ class Client
      */
     function miniCode(array $params): array
     {
-        return $this->_request(GATEWAY . '/miniCode', $params);
+        return $this->_request(GATEWAY_UNION . '/miniCode', $params);
     }
 
     /**
@@ -96,7 +97,7 @@ class Client
     function orderList(array $params): array
     {
         $params['ts'] = time();
-        return $this->_request(GATEWAY . '/api/orderList', $params);
+        return $this->_request(GATEWAY_UNION . '/api/orderList', $params);
     }
 
     /**
@@ -106,6 +107,19 @@ class Client
     public function newOrderRequest(): Order
     {
         return new Order($this);
+    }
+
+    /**
+     * 商品列表搜索接口（暂时只支持优选业务）
+     * 美团的官方文档有问题，暂时无法请求到数据
+     * @param array $params
+     * @return array
+     * @throws GuzzleException|RuntimeException
+     */
+    public function skuQuery(array $params): array
+    {
+        $params['ts'] = time();
+        return $this->_request(GATEWAY_OPENAPI . '/sku/query', $params);
     }
 
     /**

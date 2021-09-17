@@ -1,6 +1,6 @@
 <?php
 
-namespace Meituan\Union;
+namespace MeituanUnion;
 
 use RuntimeException;
 use GuzzleHttp\Psr7\Stream;
@@ -68,6 +68,18 @@ class Client
     }
 
     /**
+     * 生成小程序二维码
+     * @param array $params
+     * @return array
+     * @throws GuzzleException|RuntimeException
+     */
+    function miniCode(array $params): array
+    {
+        return $this->_request(GATEWAY . '/miniCode', $params);
+    }
+
+    /**
+     * 链接查询请求对象，可以查询推广链接和小程序二维码
      * @return Link
      */
     public function newLinkRequest(): Link
@@ -88,22 +100,12 @@ class Client
     }
 
     /**
+     * 订单查询对象，可以格式化参数查询订单列表
      * @return Order
      */
     public function newOrderRequest(): Order
     {
         return new Order($this);
-    }
-
-    /**
-     * 生成小程序二维码
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    function miniCode(array $params): array
-    {
-        return $this->_request(GATEWAY . '/miniCode', $params);
     }
 
     /**

@@ -2,10 +2,10 @@
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
-use Meituan\Union\Link;
+use MeituanUnion\Link;
 use GuzzleHttp\Exception\GuzzleException;
 
-$client = new Meituan\Union\Client(KEY, SECRET, CALLBACK_SECRET);
+$client = new MeituanUnion\Client(KEY, SECRET, CALLBACK_SECRET);
 
 // 基础参数请求推广链接
 try {

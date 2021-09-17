@@ -1,6 +1,6 @@
 <?php
 
-namespace Meituan\Union;
+namespace MeituanUnion;
 
 use RuntimeException;
 use GuzzleHttp\Exception\GuzzleException;

@@ -5,7 +5,7 @@
 
 美团联盟api接口封装
 
-## Api support
+## API Supports
 
 - ✅ [订单列表查询（新）](https://union.meituan.com/v2/apiDetail?id=1)
 - ✅ [签名(sign)生成逻辑](https://union.meituan.com/v2/apiDetail?id=2)
@@ -45,10 +45,6 @@ try {
     echo $e->getMessage();
 }
 ```
-
-## Features
-
-- 剩余接口
 
 ## Links
 

@@ -1,12 +1,12 @@
 {
-    "name": "yzchan/union-meituan",
+    "name": "yzchan/meituan-union",
     "description": "美团联盟sdk",
     "keywords": [
         "meituan api",
-        "union meituan sdk"
+        "meituan union sdk"
     ],
     "type": "library",
-    "homepage": "https://github.com/yzchan/union-meituan",
+    "homepage": "https://github.com/yzchan/meituan-union-php",
     "authors": [
         {
             "name": "chenyuzou",
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Meituan\\Union\\": "src/"
+            "MeituanUnion\\": "src/"
         }
     },
     "repositories": {

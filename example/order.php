@@ -2,17 +2,17 @@
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
-use Meituan\Union\Order;
+use MeituanUnion\Order;
 use GuzzleHttp\Exception\GuzzleException;
 
-$client = new Meituan\Union\Client(KEY, SECRET, CALLBACK_SECRET);
+$client = new MeituanUnion\Client(KEY, SECRET, CALLBACK_SECRET);
 
 // 基础参数请求
 try {
     $orders = $client->orderList([
         'startTime' => strtotime('2021-09-12'),
         'endTime' => strtotime('2021-09-13'),
-        'queryTimeType' => Meituan\Union\Order::QUERY_BY_PAYTIME,
+        'queryTimeType' => MeituanUnion\Order::QUERY_BY_PAYTIME,
         'page' => 1,
         'limit' => 10,
         'type' => Order::TAKEOUT,

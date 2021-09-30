@@ -50,7 +50,7 @@ class Client
     public function validateCallback(array $params): bool
     {
         $sign = $params['sign'];
-        return $this->sign($params) === $sign;
+        return $this->sign($params, true) === $sign;
     }
 
     /**

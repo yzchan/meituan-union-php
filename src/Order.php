@@ -43,22 +43,33 @@ class Order
     }
 
     /**
-     * @param string $time
+     * @param int $time
      * @return $this
      */
-    public function setStartTime(string $time): Order
+    public function setStartTime(int $time): Order
     {
-        $this->startTime = strtotime($time);
+        $this->startTime = $time;
         return $this;
     }
 
     /**
-     * @param string $time
+     * @param string $date
      * @return $this
      */
-    public function setEndTime(string $time): Order
+    public function setDate(string $date): Order
     {
-        $this->endTime = strtotime($time);
+        $this->startTime = strtotime($date);
+        $this->endTime = strtotime($date) + 86400;
+        return $this;
+    }
+
+    /**
+     * @param int $time
+     * @return $this
+     */
+    public function setEndTime(int $time): Order
+    {
+        $this->endTime = $time;
         return $this;
     }
 

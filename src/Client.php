@@ -145,8 +145,8 @@ class Client
             $body = $body->getContents();
         }
         $data = json_decode($body, true);
-        if ($data === false) {
-            throw new RuntimeException("json_decode error : " . json_last_error_msg());
+        if ($data == false) {
+            throw new RuntimeException("json_decode error : " . json_last_error_msg() . ". {$body}\n");
         }
 
         return $data;

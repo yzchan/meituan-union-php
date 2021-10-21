@@ -31,8 +31,9 @@ $client = new MeituanUnion\Client('<KEY>', '<SECRET>', '<CALLBACK_SECRET>');
 
 try {
     $orders = $client->newOrderRequest()
-        ->setStartTime('2021-09-12')
-        ->setEndTime('2021-09-13')
+        ->setDate('2021-10-20')
+//        ->setStartTime(strtotime('2021-09-18'))
+//        ->setEndTime(strtotime('2021-09-19'))  // 注意最多只能查询一天的订单
         ->setPage(1)
         ->setLimit(20)
         ->setQueryByPaytime()

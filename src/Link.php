@@ -18,6 +18,7 @@ class Link
     public $actId = 0;
     public $sid = '';
     public $linkType = self::H5;
+    public $shortLink = true;
 
     public function __construct(Client $client)
     {
@@ -51,6 +52,16 @@ class Link
     public function setLinkType(int $linkType): Link
     {
         $this->linkType = $linkType;
+        return $this;
+    }
+
+    /**
+     * @param bool $isShortLink
+     * @return $this
+     */
+    public function setShortLink(bool $isShortLink): Link
+    {
+        $this->shortLink = $isShortLink;
         return $this;
     }
 
@@ -100,6 +111,7 @@ class Link
             'actId' => $this->actId,
             'sid' => $this->sid,
             'linkType' => $this->linkType,
+            'shortLink' => (int)$this->shortLink,  // 0表示获取长链 1表示获取短链
         ]);
     }
 

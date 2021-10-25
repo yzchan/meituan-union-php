@@ -12,7 +12,7 @@
 - 🔜 [订单回推接口](https://union.meituan.com/v2/apiDetail?id=6)
 - ✅ [自助取链接口](https://union.meituan.com/v2/apiDetail?id=8)
 - ✅ [小程序二维码生成](https://union.meituan.com/v2/apiDetail?id=12)
-- ⚠️ [商品列表搜索接口（暂时只支持优选业务）](https://union.meituan.com/v2/apiDetail?id=21) 官方文档有问题，暂时无法查询
+- ⚠️ [商品列表搜索接口（暂时只支持优选业务）](https://union.meituan.com/v2/apiDetail?id=21)
 
 ## Installation
 
@@ -31,13 +31,15 @@ $client = new MeituanUnion\Client('<KEY>', '<SECRET>', '<CALLBACK_SECRET>');
 
 try {
     $orders = $client->newOrderRequest()
-        ->setDate('2021-10-20')
+        ->setBusinessLine(\MeituanUnion\Order::WAIMAI)  // 业务线
+        ->setActId(33)              // 活动id
+        ->setDate('2021-10-20')     // 查询日期
 //        ->setStartTime(strtotime('2021-09-18'))
 //        ->setEndTime(strtotime('2021-09-19'))  // 注意最多只能查询一天的订单
         ->setPage(1)
         ->setLimit(20)
         ->setQueryByPaytime()
-        ->query();
+        ->list();
     echo "\nformat params request: \t";
     print_r($orders);
 } catch (GuzzleException $e) {

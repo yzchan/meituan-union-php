@@ -7,8 +7,7 @@ use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 
-const GATEWAY_UNION = 'https://runion.meituan.com';
-const GATEWAY_OPENAPI = 'https://openapi.meituan.com';
+const GATEWAY = 'https://openapi.meituan.com';
 
 class Client
 {
@@ -61,10 +60,7 @@ class Client
      */
     public function generateUrl(array $params): array
     {
-        $url = GATEWAY_UNION . '/generateLink';
-        $params = array_merge([
-            'key' => $this->key,
-        ], $params);
+        $url = GATEWAY . '/api/generateLink';
         return $this->_request($url, $params);
     }
 
@@ -76,7 +72,7 @@ class Client
      */
     function miniCode(array $params): array
     {
-        return $this->_request(GATEWAY_UNION . '/miniCode', $params);
+        return $this->_request(GATEWAY . '/api/miniCode', $params);
     }
 
     /**
@@ -89,6 +85,17 @@ class Client
     }
 
     /**
+     * 单个订单查询（新）
+     * @param array $params
+     * @return array
+     * @throws GuzzleException|RuntimeException
+     */
+    function order(array $params):array
+    {
+        return $this->_request(GATEWAY . '/api/order', $params);
+    }
+
+    /**
      * 新订单列表查询
      * @param array $params
      * @return array
@@ -97,7 +104,7 @@ class Client
     function orderList(array $params): array
     {
         $params['ts'] = time();
-        return $this->_request(GATEWAY_UNION . '/api/orderList', $params);
+        return $this->_request(GATEWAY . '/api/orderList', $params);
     }
 
     /**
@@ -111,7 +118,6 @@ class Client
 
     /**
      * 商品列表搜索接口（暂时只支持优选业务）
-     * 美团的官方文档有问题，暂时无法请求到数据
      * @param array $params
      * @return array
      * @throws GuzzleException|RuntimeException
@@ -119,7 +125,7 @@ class Client
     public function skuQuery(array $params): array
     {
         $params['ts'] = time();
-        return $this->_request(GATEWAY_OPENAPI . '/sku/query', $params);
+        return $this->_request(GATEWAY . '/sku/query', $params);
     }
 
     /**
@@ -130,7 +136,7 @@ class Client
      */
     protected function _request(string $url, array $params): array
     {
-        $params['key'] = $this->key;
+        $params['appkey'] = $this->key;
         $params['sign'] = $this->sign($params);
 
         $client = new GuzzleClient(['http_errors' => false]);

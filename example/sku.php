@@ -11,8 +11,8 @@ try {
     $link = $client->skuQuery([
         'businessType' => '6', // 优选固定为6
         'sid' => SID,
-//        'pageSize' => 50,
-//        'pageNO' => 1,
+        'pageSize' => 50,
+        'pageNO' => 1,
         'longitude' => '119.99997094482418', // 武汉
         'latitude' => '31.8240613040921',
 //        'deviceType' => '',

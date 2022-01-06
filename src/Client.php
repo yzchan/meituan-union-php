@@ -2,6 +2,7 @@
 
 namespace MeituanUnion;
 
+use MeituanUnion\request\Request;
 use RuntimeException;
 use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Client as GuzzleClient;
@@ -56,107 +57,33 @@ class Client
     }
 
     /**
-     * 生成推广URL
+     * @param Request $request
+     * @return array
+     * @throws GuzzleException|RuntimeException
+     */
+    public function execute(Request $request): array
+    {
+        $params = (array)$request;
+        $ref = new \ReflectionClass($request);
+        $url = $ref->getConstant('PATH');
+        return $this->request($url, $params);
+    }
+
+    /**
+     * @param string $path
      * @param array $params
      * @return array
      * @throws GuzzleException|RuntimeException
      */
-    public function generateUrl(array $params): array
-    {
-        $url = GATEWAY . '/api/generateLink';
-        return $this->_request($url, $params);
-    }
-
-    /**
-     * 生成小程序二维码
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    function miniCode(array $params): array
-    {
-        return $this->_request(GATEWAY . '/api/miniCode', $params);
-    }
-
-    /**
-     * 链接查询请求对象，可以查询推广链接和小程序二维码
-     * @return Link
-     */
-    public function newLinkRequest(): Link
-    {
-        return new Link($this);
-    }
-
-    /**
-     * 单个订单查询（新）
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    function order(array $params): array
-    {
-        return $this->_request(GATEWAY . '/api/order', $params);
-    }
-
-    /**
-     * 新订单列表查询
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    function orderList(array $params): array
-    {
-        $params['ts'] = time();
-        return $this->_request(GATEWAY . '/api/orderList', $params);
-    }
-
-    /**
-     * 订单查询对象，可以格式化参数查询订单列表
-     * @return Order
-     */
-    public function newOrderRequest(): Order
-    {
-        return new Order($this);
-    }
-
-    /**
-     * 商品列表搜索接口（暂时只支持优选业务）
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    public function skuQuery(array $params): array
-    {
-        $params['ts'] = time();
-        return $this->_request(GATEWAY . '/sku/query', $params);
-    }
-
-    /**
-     * 优选sid质量分&复购率查询
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    public function qualityScore(array $params): array
-    {
-        $params['ts'] = time();
-        return $this->_request(GATEWAY . '/api/getqualityscorebysid', $params);
-    }
-
-    /**
-     * @param string $url
-     * @param array $params
-     * @return array
-     * @throws GuzzleException|RuntimeException
-     */
-    protected function _request(string $url, array $params): array
+    public function request(string $path, array $params): array
     {
         $params['appkey'] = $this->key;
+        $params['ts'] = time();
         $params['sign'] = $this->sign($params);
 
-        $client = new GuzzleClient(['http_errors' => false]);
+        $client = new GuzzleClient(['base_uri' => GATEWAY, 'http_errors' => false]);
         try {
-            $response = $client->request('GET', $url, ['query' => $params]);
+            $response = $client->request('GET', $path, ['query' => $params]);
         } catch (GuzzleException $e) {
             throw $e;
         }

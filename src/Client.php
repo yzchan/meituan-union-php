@@ -49,6 +49,9 @@ class Client
     public function validateCallback(array $params): bool
     {
         $sign = $params['sign'];
+        if (isset($params['tradeTypeList'])) { // 优选订单回推验签处理
+            $params['tradeTypeList'] = json_encode($params['tradeTypeList'], true);
+        }
         return $this->sign($params, true) === $sign;
     }
 
@@ -90,7 +93,7 @@ class Client
      * @return array
      * @throws GuzzleException|RuntimeException
      */
-    function order(array $params):array
+    function order(array $params): array
     {
         return $this->_request(GATEWAY . '/api/order', $params);
     }
@@ -126,6 +129,18 @@ class Client
     {
         $params['ts'] = time();
         return $this->_request(GATEWAY . '/sku/query', $params);
+    }
+
+    /**
+     * 优选sid质量分&复购率查询
+     * @param array $params
+     * @return array
+     * @throws GuzzleException|RuntimeException
+     */
+    public function qualityScore(array $params): array
+    {
+        $params['ts'] = time();
+        return $this->_request(GATEWAY . '/api/getqualityscorebysid', $params);
     }
 
     /**

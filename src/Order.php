@@ -7,18 +7,10 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class Order
 {
-    //  订单类型（旧业务线类型-type）
-//    const GROUP_SALE = 0;  // 团购订单
-//    const HOTEL = 2;       // 酒店订单
-//    const TAKEOUT = 4;     // 外卖订单
-//    const PHONE = 5;       // 话费&团好货订单
-//    const FLASH_SALE = 6;  // 闪购订单
-//    const OPTIMIZATION = 8;// 优选订单
-
     // 业务线类型 BusinessLine
     const PINGTAI = 1;  // 平台
     const WAIMAI = 2;   // 外卖/闪购  子业务线：外卖=1  闪购=2
-    const HOTEL = 3;    // 酒店
+    const JIUDIAN = 3;  // 酒店
     const YOUXUAN = 4;  // 优选
 
 
@@ -201,7 +193,6 @@ class Order
         if ($this->actId != 0) {
             $params['actId'] = $this->actId;
         }
-
 
         return $this->_client->order($params);
     }

@@ -2,14 +2,15 @@
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
-use MeituanUnion\request\SkuQuery;
+use MeituanUnion\request\SkuQueryRequest;
 use GuzzleHttp\Exception\GuzzleException;
 
 $client = new MeituanUnion\Client(KEY, SECRET, CALLBACK_SECRET);
 
+// 商品列表搜索接口
 try {
-    $request = new SkuQuery();
-    $request->setBusinessType(6);
+    $request = new SkuQueryRequest();
+    $request->setBusinessType(6);   // 还是旧¢的业务线类型
     $request->setSid(SID);
     $request->setPageSize(50);  // 该参数暂时无法生效，返回固定为20
     $request->setPageNO(1);
@@ -18,7 +19,7 @@ try {
     $request->setDeviceType('');
     $request->setDeviceId('');
     echo "\nrequest params: ";
-    print_r((array)$request);
+    print_r($request->asArray());
     $response = $client->execute($request);
     echo "\nresponse: ";
     print_r($response);

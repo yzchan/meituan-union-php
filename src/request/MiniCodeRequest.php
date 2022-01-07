@@ -9,8 +9,12 @@ namespace MeituanUnion\request;
  */
 class MiniCodeRequest extends Request
 {
-    const PATH = '/api/miniCode';
+    public static function apiPath(): string
+    {
+        return '/api/miniCode';
+    }
 
     use SidTrait;
+
     use ActIdTrait;
 }

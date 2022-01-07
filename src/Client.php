@@ -2,25 +2,73 @@
 
 namespace MeituanUnion;
 
-use MeituanUnion\request\Request;
 use RuntimeException;
 use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
+use MeituanUnion\request\Request;
+use MeituanUnion\request\SkuQueryRequest;
+use MeituanUnion\request\OrderRequest;
+use MeituanUnion\request\MiniCodeRequest;
+use MeituanUnion\request\OrderListRequest;
+use MeituanUnion\request\GenerateLinkRequest;
+use MeituanUnion\request\GetQualityScoreBySidRequest;
 
 const GATEWAY = 'https://openapi.meituan.com';
 
+/**
+ * Class Client
+ * @package MeituanUnion
+ *
+ * magic method list
+ * @method array order(array $params) 单订单查询接口
+ * @method array orderList(array $params) 订单列表查询接口
+ * @method array miniCode(array $params) 小程序生成二维码
+ * @method array generateUrl(array $params) 自助取链
+ * @method array skuQuery(array $params) 商品列表搜索接口
+ * @method array getQualityScoreBySid(array $params) 优选sid质量分&复购率查询
+ */
 class Client
 {
     private $key;
     private $secret; // 应用secret
     private $callbackSecret; // 回调secret
 
+    /**
+     * Client constructor.
+     * @param string $key
+     * @param string $secret
+     * @param string $callbackSecret
+     */
     public function __construct(string $key = "", string $secret = "", string $callbackSecret = "")
     {
         $this->key = $key;
         $this->secret = $secret;
         $this->callbackSecret = $callbackSecret;
+    }
+
+    /**
+     * @param string $method
+     * @param array $args
+     * @return array
+     * @throws GuzzleException|RuntimeException
+     */
+    function __call(string $method, array $args): array
+    {
+        $methods = [
+            'order' => OrderRequest::apiPath(),
+            'orderList' => OrderListRequest::apiPath(),
+            'miniCode' => MiniCodeRequest::apiPath(),
+            'generateUrl' => GenerateLinkRequest::apiPath(),
+            'skuQuery' => SkuQueryRequest::apiPath(),
+            'getQualityScoreBySid' => GetQualityScoreBySidRequest::apiPath(),
+        ];
+        if (in_array($method, array_keys($methods)) && count($args) == 1) {
+            return $this->request($methods[$method], $args[0]);
+        } else {
+            $class = get_class($this);
+            throw new RuntimeException("Call to undefined method $class::$method");
+        }
     }
 
     /**
@@ -63,10 +111,10 @@ class Client
      */
     public function execute(Request $request): array
     {
-        $params = (array)$request;
-        $ref = new \ReflectionClass($request);
-        $url = $ref->getConstant('PATH');
-        return $this->request($url, $params);
+        $request->beforeRequest();
+        $response = $this->request($request::apiPath(), $request->asArray());
+        $request->afterRequest();
+        return $response;
     }
 
     /**

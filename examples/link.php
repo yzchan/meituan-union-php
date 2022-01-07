@@ -16,7 +16,7 @@ try {
     $request->setH5Link();
     $request->setShortLink(true);
     echo "自助取链demo:\nrequest params: ";
-    print_r((array)$request);
+    print_r($request->asArray());
     $response = $client->execute($request);
     echo "\nresponse: ";
     print_r($response);
@@ -33,7 +33,7 @@ try {
     $request->setSid(SID);
     $request->setActId(ACTID);
     echo "小程序二维码demo:\nrequest params: ";
-    print_r((array)$request);
+    print_r($request->asArray());
     $response = $client->execute($request);
     echo "\nresponse: ";
     print_r($response);

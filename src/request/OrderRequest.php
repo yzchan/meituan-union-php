@@ -2,6 +2,8 @@
 
 namespace MeituanUnion\request;
 
+use MeituanUnion\BusinessLine;
+
 /**
  * 单订单查询接口
  * Class OrderRequest
@@ -9,23 +11,17 @@ namespace MeituanUnion\request;
  */
 class OrderRequest extends Request
 {
-    const PATH = '/api/order';
+    public static function apiPath(): string
+    {
+        return '/api/order';
+    }
 
     use ActIdTrait;
 
-    public $businessLine = 2;   // 业务线
-    public $orderId = '';       // 订单ID
-    public $full = 0;           // 是否返回完整订单信息(即是否包含返佣、退款信息) 枚举值： 0-非全量查询  1-全量查询
+    use BusinessLineTrait;
 
-    /**
-     * @param int $businessLine
-     * @return $this
-     */
-    public function setBusinessLine(int $businessLine): self
-    {
-        $this->businessLine = $businessLine;
-        return $this;
-    }
+    public $orderId = '';   // 订单ID
+    public $full = 0;       // 是否返回完整订单信息(即是否包含返佣、退款信息) 枚举值： 0-非全量查询  1-全量查询
 
     /**
      * @param string $orderId
@@ -38,12 +34,12 @@ class OrderRequest extends Request
     }
 
     /**
-     * @param int $full
+     * @param bool $full
      * @return $this
      */
-    public function setFull(int $full = 1): self
+    public function setFull(bool $full = true): self
     {
-        $this->full = $full;
+        $this->full = (int)$full;
         return $this;
     }
 }

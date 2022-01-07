@@ -9,13 +9,10 @@ namespace MeituanUnion\request;
  */
 class GenerateLinkRequest extends Request
 {
-    const PATH = '/api/generateLink';
-
-    use SidTrait;
-    use ActIdTrait;
-
-    public $linkType = self::H5;    // 投放链接的类型
-    public $shortLink = true;       // 长链 or 短链
+    public static function apiPath(): string
+    {
+        return '/api/generateLink';
+    }
 
     // 链接类型
     const H5 = 1;      // H5类型的链接
@@ -23,6 +20,12 @@ class GenerateLinkRequest extends Request
     const CENTER = 3;  // 中间唤起页的链接
     const WECHAT = 4;  // 微信小程序Path
     const GROUP = 5;    // 团口令
+
+    use SidTrait;
+    use ActIdTrait;
+
+    public $linkType = self::H5;    // 投放链接的类型
+    public $shortLink = true;       // 长链 or 短链
 
     /**
      * @param int $linkType

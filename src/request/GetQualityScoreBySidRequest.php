@@ -24,8 +24,12 @@ class GetQualityScoreBySidRequest extends Request
     use SidTrait;
     use BusinessLineTrait;
     use DateBetweenTrait;
+    use CityIdTrait;
+    use CategoryIdTrait;
+    use PaginationTrait;
 
     public $type = 1;           // 质量分类型（1表示预估类型、2表示实际类型）
+    public $promotionType = 2;  // 订单质量分类型：CPS类订单=1；CPA类订单=2(默认)  2022年4月新增，优选CPA、S均提供质量分查询能力
 
     /**
      * @param int $type
@@ -37,26 +41,13 @@ class GetQualityScoreBySidRequest extends Request
         return $this;
     }
 
-    public $pageSize = 20;      // 页大小，默认20，1~100
-    public $pageNo = 1;         // 第几页，默认：１
-
     /**
-     * @param int $pageNo
+     * @param int $promotionType
      * @return $this
      */
-    public function setPageNo(int $pageNo): self
+    public function setPromotionType(int $promotionType): self
     {
-        $this->pageNo = $pageNo;
-        return $this;
-    }
-
-    /**
-     * @param int $pageSize
-     * @return $this
-     */
-    public function setPageSize(int $pageSize): self
-    {
-        $this->pageSize = $pageSize;
+        $this->promotionType = $promotionType;
         return $this;
     }
 }

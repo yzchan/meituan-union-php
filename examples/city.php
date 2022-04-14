@@ -3,18 +3,17 @@ require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
 use MeituanUnion\BusinessLine;
-use MeituanUnion\request\OrderRequest;
+use MeituanUnion\request\CityRequest;
 use GuzzleHttp\Exception\GuzzleException;
 
 $client = new MeituanUnion\Client(KEY, SECRET, CALLBACK_SECRET);
 
-// 订单详情查询
+// 城市信息查询
 try {
-    $request = new OrderRequest();
-    $request->setBusinessLine(BusinessLine::WAIMAI);
-    $request->setActId(33);
-    $request->setOrderId('00000');
-    $request->setFull(0);
+    $request = new CityRequest();
+    $request->setBusinessLine(BusinessLine::YOUXUAN);
+    $request->setPageSize(50);
+    $request->setPageNo(1);
     echo "\nrequest params: ";
     print_r($request->asArray());
     $response = $client->execute($request);

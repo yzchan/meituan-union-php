@@ -27,57 +27,10 @@ class OrderListRequest extends Request
         return $params;
     }
 
-    // 活动id，与businessLine二者至少择其一
-    use ActIdTrait;
-
-    // 业务线，与actId二者至少择其一
     use BusinessLineTrait;
-
-    // 时间区间属性
+    use ActIdTrait;
     use TimeDuringTrait;
-
-    public $page = 1;   // 分页，起始值从1开始
-    public $limit = 20; // 每页显示数据条数，最大值100
-
-    /**
-     * @param int $pageNo
-     * @return $this
-     */
-    public function setPageNo(int $pageNo = 1): self
-    {
-        $this->page = $pageNo;
-        return $this;
-    }
-
-    /**
-     * 同setPageNo
-     * @param int $page
-     * @return $this
-     */
-    public function setPage(int $page = 1): self
-    {
-        return $this->setPageNo($page);
-    }
-
-    /**
-     * @param int $pageSize
-     * @return $this
-     */
-    public function setPageSize(int $pageSize): self
-    {
-        $this->limit = $pageSize;
-        return $this;
-    }
-
-    /**
-     * 同setPageSize
-     * @param int $limit
-     * @return $this
-     */
-    public function setLimit(int $limit): self
-    {
-        return $this->setPageSize($limit);
-    }
+    use Pagination2Trait;
 
     // 查询时间类型
     const QUERY_BY_PAYTIME = 1; // 按订单支付时间查询

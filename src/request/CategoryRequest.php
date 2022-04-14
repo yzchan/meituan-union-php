@@ -3,20 +3,18 @@
 namespace MeituanUnion\request;
 
 /**
- * 商品列表搜索接口
- * Class SkuQueryRequest
+ * 商品类目查询
+ * Class CategoryRequest
  * @package MeituanUnion\request
  */
-class SkuQueryRequest extends Request
+class CategoryRequest extends Request
 {
     public static function apiPath(): string
     {
-        return '/api/mtunion/sku';
+        return '/api/mtunion/category';
     }
 
     use BusinessLineTrait;
     use ActIdTrait;
-    use CityIdTrait;
-    use CategoryIdTrait;
     use PaginationTrait;
 }

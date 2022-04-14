@@ -14,7 +14,13 @@ class MiniCodeRequest extends Request
         return '/api/miniCode';
     }
 
-    use SidTrait;
+    const WECHAT = 4;               // 微信小程序Path
+    const YOUXUAN_WXAPP = 8;        // 微信小程序-优选小程序
 
+    use SidTrait;
     use ActIdTrait;
+    use LinkTypeTrait;
+    use CityIdTrait;
+    use SkuIdTrait;
+    use CategoryIdTrait;
 }

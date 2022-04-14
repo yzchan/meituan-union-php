@@ -3,7 +3,8 @@
     "description": "美团联盟sdk",
     "keywords": [
         "meituan api",
-        "meituan union sdk"
+        "meituan union sdk",
+        "mtunion"
     ],
     "type": "library",
     "homepage": "https://github.com/yzchan/meituan-union-php",

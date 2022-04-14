@@ -13,7 +13,7 @@ try {
     $request = new GenerateLinkRequest();
     $request->setSid(SID);
     $request->setActId(33);
-    $request->setH5Link();
+    $request->setLinkType(GenerateLinkRequest::H5);
     $request->setShortLink(true);
     echo "自助取链demo:\nrequest params: ";
     print_r($request->asArray());
@@ -26,12 +26,12 @@ try {
     echo $e->getMessage();
 }
 
-
 // 获取小程序二维码
 try {
     $request = new MiniCodeRequest();
     $request->setSid(SID);
     $request->setActId(ACTID);
+    $request->setLinkType(MiniCodeRequest::WECHAT);
     echo "小程序二维码demo:\nrequest params: ";
     print_r($request->asArray());
     $response = $client->execute($request);

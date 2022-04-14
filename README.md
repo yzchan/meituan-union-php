@@ -3,7 +3,16 @@
 
 ## About
 
-美团联盟api接口封装。已同步更新至美团最新版本的接口。(2021-10-25)[美团联盟接口更新通知](https://union.meituan.com/single/announcement/255)
+美团联盟api接口SDK。
+
+## 2022-04-14 美团优选接口更新
+
+- 新增城市信息查询、商品类目查询接口
+- 其他接口都是针对美团优选的参数调整
+
+## 2021-10-25 美团联盟新版接口更新
+
+[美团联盟接口更新通知](https://union.meituan.com/single/announcement/255)
 
 ## API Supports
 
@@ -13,8 +22,10 @@
 - ✅ 订单回推签名验证
 - ✅ 自助取链接口
 - ✅ 小程序二维码生成
-- ⬇️ ~~商品列表搜索接口~~（2022年1月17已暂停数据访问）
+- ✅️ 商品列表搜索接口
 - ✅️ 优选sid质量分&复购率查询
+- ✅️ 城市信息查询(new)
+- ✅️ 商品类目查询(new)
 
 ## Installation
 
@@ -60,5 +71,6 @@ try {
 ## Links
 
 - [美团联盟](https://union.meituan.com/)
+- [美团联盟API接口](https://union.meituan.com/single/helpCenter?id=44)
 - [美团联盟接口更新通知](https://union.meituan.com/single/announcement/255)
 - [Guzzle](https://github.com/guzzle/guzzle)

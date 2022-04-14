@@ -15,27 +15,24 @@ class GenerateLinkRequest extends Request
     }
 
     // 链接类型
-    const H5 = 1;      // H5类型的链接
-    const DEEPLINK = 2;// DEEP类型的链接
-    const CENTER = 3;  // 中间唤起页的链接
-    const WECHAT = 4;  // 微信小程序Path
-    const GROUP = 5;    // 团口令
+    const H5 = 1;                   // H5类型的链接
+    const DEEPLINK = 2;             // DEEP类型的链接
+    const MID = 3;                  // 中间唤起页的链接
+    const WECHAT = 4;               // 微信小程序Path
+    const GROUP_WORD = 5;           // 团口令
+    const YOUXUAN_DEEPLINK = 6;     // Deeplink-优选APP
+    const YOUXUAN_MIDDLEPAGE = 7;   // 中间页唤起-优选APP
+    const YOUXUAN_WXAPP = 8;        // 微信小程序-优选小程序
 
     use SidTrait;
     use ActIdTrait;
+    use LinkTypeTrait;
+    use CityIdTrait;
+    use SkuIdTrait;
+    use CategoryIdTrait;
 
-    public $linkType = self::H5;    // 投放链接的类型
     public $shortLink = true;       // 长链 or 短链
-
-    /**
-     * @param int $linkType
-     * @return $this
-     */
-    public function setLinkType(int $linkType): self
-    {
-        $this->linkType = $linkType;
-        return $this;
-    }
+    public $poiId = 0;              // 门店信息-目前不起用
 
     /**
      * @param bool $isShortLink
@@ -44,51 +41,6 @@ class GenerateLinkRequest extends Request
     public function setShortLink(bool $isShortLink): self
     {
         $this->shortLink = $isShortLink;
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setH5Link(): self
-    {
-        $this->linkType = self::H5;
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setDeepLink(): self
-    {
-        $this->linkType = self::DEEPLINK;
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setCenterLink(): self
-    {
-        $this->linkType = self::CENTER;
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setWechatLink(): self
-    {
-        $this->linkType = self::WECHAT;
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setGroupLink(): self
-    {
-        $this->linkType = self::GROUP;
         return $this;
     }
 }

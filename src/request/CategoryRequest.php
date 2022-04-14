@@ -2,6 +2,10 @@
 
 namespace MeituanUnion\request;
 
+use MeituanUnion\request\traits\ActIdTrait;
+use MeituanUnion\request\traits\BusinessLineTrait;
+use MeituanUnion\request\traits\PaginationTrait;
+
 /**
  * 商品类目查询
  * Class CategoryRequest

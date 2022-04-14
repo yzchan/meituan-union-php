@@ -1,6 +1,6 @@
 <?php
 
-namespace MeituanUnion\request;
+namespace MeituanUnion\request\traits;
 
 trait ActIdTrait
 {

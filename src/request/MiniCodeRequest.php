@@ -2,6 +2,13 @@
 
 namespace MeituanUnion\request;
 
+use MeituanUnion\request\traits\ActIdTrait;
+use MeituanUnion\request\traits\CategoryIdTrait;
+use MeituanUnion\request\traits\CityIdTrait;
+use MeituanUnion\request\traits\LinkTypeTrait;
+use MeituanUnion\request\traits\SidTrait;
+use MeituanUnion\request\traits\SkuIdTrait;
+
 /**
  * 小程序生成二维码
  * Class MiniCodeRequest

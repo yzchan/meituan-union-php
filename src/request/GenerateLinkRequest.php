@@ -2,6 +2,13 @@
 
 namespace MeituanUnion\request;
 
+use MeituanUnion\request\traits\ActIdTrait;
+use MeituanUnion\request\traits\CategoryIdTrait;
+use MeituanUnion\request\traits\CityIdTrait;
+use MeituanUnion\request\traits\LinkTypeTrait;
+use MeituanUnion\request\traits\SidTrait;
+use MeituanUnion\request\traits\SkuIdTrait;
+
 /**
  * 自助取链接口
  * Class GenerateLinkRequest

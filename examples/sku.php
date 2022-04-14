@@ -3,14 +3,14 @@ require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
 use MeituanUnion\BusinessLine;
-use MeituanUnion\request\SkuQueryRequest;
+use MeituanUnion\request\SkuRequest;
 use GuzzleHttp\Exception\GuzzleException;
 
 $client = new MeituanUnion\Client(KEY, SECRET, CALLBACK_SECRET);
 
 // 商品列表搜索接口
 try {
-    $request = new SkuQueryRequest();
+    $request = new SkuRequest();
     $request->setBusinessLine(BusinessLine::YOUXUAN);
     $request->setActId(105);
 //    $request->setCityId(1);

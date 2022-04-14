@@ -2,7 +2,8 @@
 
 namespace MeituanUnion\request;
 
-use MeituanUnion\BusinessLine;
+use MeituanUnion\request\traits\ActIdTrait;
+use MeituanUnion\request\traits\BusinessLineTrait;
 
 /**
  * 单订单查询接口

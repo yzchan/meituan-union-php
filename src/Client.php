@@ -2,12 +2,14 @@
 
 namespace MeituanUnion;
 
+use MeituanUnion\request\CategoryRequest;
+use MeituanUnion\request\CityRequest;
 use RuntimeException;
 use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use MeituanUnion\request\Request;
-use MeituanUnion\request\SkuQueryRequest;
+use MeituanUnion\request\SkuRequest;
 use MeituanUnion\request\OrderRequest;
 use MeituanUnion\request\MiniCodeRequest;
 use MeituanUnion\request\OrderListRequest;
@@ -25,8 +27,10 @@ const GATEWAY = 'https://openapi.meituan.com';
  * @method array orderList(array $params) 订单列表查询接口
  * @method array miniCode(array $params) 小程序生成二维码
  * @method array generateUrl(array $params) 自助取链
- * @method array skuQuery(array $params) 商品列表搜索接口
+ * @method array sku(array $params) 商品列表搜索接口
  * @method array getQualityScoreBySid(array $params) 优选sid质量分&复购率查询
+ * @method array category(array $params) 商品类目查询
+ * @method array city(array $params) 城市信息查询
  */
 class Client
 {
@@ -60,8 +64,10 @@ class Client
             'orderList' => OrderListRequest::apiPath(),
             'miniCode' => MiniCodeRequest::apiPath(),
             'generateUrl' => GenerateLinkRequest::apiPath(),
-            'skuQuery' => SkuQueryRequest::apiPath(),
             'getQualityScoreBySid' => GetQualityScoreBySidRequest::apiPath(),
+            'sku' => SkuRequest::apiPath(),
+            'category' => CategoryRequest::apiPath(),
+            'city' => CityRequest::apiPath(),
         ];
         if (in_array($method, array_keys($methods)) && count($args) == 1) {
             return $this->request($methods[$method], $args[0]);
@@ -130,11 +136,7 @@ class Client
         $params['sign'] = $this->sign($params);
 
         $client = new GuzzleClient(['base_uri' => GATEWAY, 'http_errors' => false]);
-        try {
-            $response = $client->request('GET', $path, ['query' => $params]);
-        } catch (GuzzleException $e) {
-            throw $e;
-        }
+        $response = $client->request('GET', $path, ['query' => $params]);
 
         $body = $response->getBody();
         if ($body instanceof Stream) {

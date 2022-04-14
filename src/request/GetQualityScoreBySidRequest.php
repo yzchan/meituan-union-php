@@ -3,6 +3,12 @@
 namespace MeituanUnion\request;
 
 use MeituanUnion\BusinessLine;
+use MeituanUnion\request\traits\BusinessLineTrait;
+use MeituanUnion\request\traits\CategoryIdTrait;
+use MeituanUnion\request\traits\CityIdTrait;
+use MeituanUnion\request\traits\DateBetweenTrait;
+use MeituanUnion\request\traits\PaginationTrait;
+use MeituanUnion\request\traits\SidTrait;
 
 /**
  * 优选sid质量分&复购率查询

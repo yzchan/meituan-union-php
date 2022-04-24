@@ -15,5 +15,5 @@ class BusinessLine
     // 当业务线类型=2时，存在如下子业务分类：
     const SUB_LINE_WAIMAI = 1;      // 外卖订单
     const SUB_LINE_SHANGOU = 2;     // 闪购订单
-    const SUB_LINE_TUANHAOHUO = 3;  // 美团电商订单（团好货）
+    const SUB_LINE_DIANSHAGN = 3;   // 美团电商订单（团好货）
 }

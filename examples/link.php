@@ -30,7 +30,7 @@ try {
 try {
     $request = new MiniCodeRequest();
     $request->setSid(SID);
-    $request->setActId(ACTID);
+    $request->setActId(33);
     $request->setLinkType(MiniCodeRequest::WECHAT);
     echo "小程序二维码demo:\nrequest params: ";
     print_r($request->asArray());

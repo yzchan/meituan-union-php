@@ -14,15 +14,14 @@ try {
     $request = new OrderListRequest();
     $request->setBusinessLine(BusinessLine::WAIMAI);
     $request->setActId(33); // actId和businessLine至少有一个
-    $startTime = strtotime('2021-11-18');
-    $endTime = strtotime('2021-11-19'); // 不能超过1天
-    $request->setTimeBetween($startTime, $endTime); // 设置查询时间区间
-//    $request->setStartTime($startTime); // 或者单独指定开始、结束时间
-//    $request->setEndTime($endTime);
-//    $request->setDate('2021-10-20');  // 也可以指定某一天也查询
+    $startTime = strtotime('2022-04-04 00:00:00');
+    $endTime = strtotime('2022-04-05 00:00:00'); // 不能超过1天
+//    $request->setStartTime($startTime); // 指定开始时间
+//    $request->setEndTime($endTime); // 指定结束时间
+    $request->setTimeBetween($startTime, $endTime); // 指定时间区间
+//    $request->setDate('2022-04-04');  // 指定日期
     $request->setPage(1);
     $request->setLimit(1);
-    $request->setQueryByPaytime();
     echo "\nrequest params: ";
     print_r($request->asArray());
     $response = $client->execute($request);

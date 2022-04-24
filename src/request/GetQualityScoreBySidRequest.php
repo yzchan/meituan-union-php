@@ -38,6 +38,8 @@ class GetQualityScoreBySidRequest extends Request
     public $promotionType = 2;  // 订单质量分类型：CPS类订单=1；CPA类订单=2(默认)  2022年4月新增，优选CPA、S均提供质量分查询能力
 
     /**
+     * 质量分类型（1表示预估类型、2表示实际类型）
+     * 预估分：T+3生成；实际分：T+9生成
      * @param int $type
      * @return $this
      */

@@ -37,28 +37,6 @@ class OrderListRequest extends Request
     use TimeDuringTrait;
     use Pagination2Trait;
 
-    // 查询时间类型
-    const QUERY_BY_PAYTIME = 1; // 按订单支付时间查询
-    const QUERY_BY_MODTIME = 2; // 按订单发生修改时间查询
-    public $queryTimeType = 1;  // 查询时间类型，非必填
-
-    /**
-     * 设置按订单支付时间查询
-     * @return $this
-     */
-    public function setQueryByPaytime(): self
-    {
-        $this->queryTimeType = self::QUERY_BY_PAYTIME;
-        return $this;
-    }
-
-    /**
-     * 设置按订单发生修改时间查询
-     * @return $this
-     */
-    public function setQueryByModtime(): self
-    {
-        $this->queryTimeType = self::QUERY_BY_MODTIME;
-        return $this;
-    }
+    // 查询时间类型 目前只能按订单支付时间查询
+    public $queryTimeType = 1;
 }

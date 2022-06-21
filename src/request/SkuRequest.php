@@ -15,14 +15,14 @@ use MeituanUnion\request\traits\PaginationTrait;
  */
 class SkuRequest extends Request
 {
-    public static function apiPath(): string
-    {
-        return '/api/mtunion/sku';
-    }
-
     use BusinessLineTrait;
     use ActIdTrait;
     use CityIdTrait;
     use CategoryIdTrait;
     use PaginationTrait;
+
+    public static function apiPath(): string
+    {
+        return '/api/mtunion/sku';
+    }
 }

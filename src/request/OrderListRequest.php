@@ -14,6 +14,11 @@ use MeituanUnion\request\traits\TimeDuringTrait;
  */
 class OrderListRequest extends Request
 {
+    use BusinessLineTrait;
+    use ActIdTrait;
+    use TimeDuringTrait;
+    use Pagination2Trait;
+
     public static function apiPath(): string
     {
         return '/api/orderList';
@@ -31,11 +36,6 @@ class OrderListRequest extends Request
         }
         return $params;
     }
-
-    use BusinessLineTrait;
-    use ActIdTrait;
-    use TimeDuringTrait;
-    use Pagination2Trait;
 
     // 查询时间类型 目前只能按订单支付时间查询
     public $queryTimeType = 1;

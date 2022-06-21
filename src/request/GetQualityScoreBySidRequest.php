@@ -17,6 +17,13 @@ use MeituanUnion\request\traits\SidTrait;
  */
 class GetQualityScoreBySidRequest extends Request
 {
+    use SidTrait;
+    use BusinessLineTrait;
+    use DateBetweenTrait;
+    use CityIdTrait;
+    use CategoryIdTrait;
+    use PaginationTrait;
+
     public static function apiPath(): string
     {
         return '/api/getqualityscorebysid';
@@ -26,13 +33,6 @@ class GetQualityScoreBySidRequest extends Request
     {
         $this->setBusinessLine(BusinessLine::YOUXUAN);
     }
-
-    use SidTrait;
-    use BusinessLineTrait;
-    use DateBetweenTrait;
-    use CityIdTrait;
-    use CategoryIdTrait;
-    use PaginationTrait;
 
     public $type = 1;           // 质量分类型（1表示预估类型、2表示实际类型）
     public $promotionType = 2;  // 订单质量分类型：CPS类订单=1；CPA类订单=2(默认)  2022年4月新增，优选CPA、S均提供质量分查询能力

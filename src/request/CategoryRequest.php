@@ -13,12 +13,12 @@ use MeituanUnion\request\traits\PaginationTrait;
  */
 class CategoryRequest extends Request
 {
+    use BusinessLineTrait;
+    use ActIdTrait;
+    use PaginationTrait;
+
     public static function apiPath(): string
     {
         return '/api/mtunion/category';
     }
-
-    use BusinessLineTrait;
-    use ActIdTrait;
-    use PaginationTrait;
 }

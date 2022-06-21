@@ -74,3 +74,9 @@ try {
 - [美团联盟API接口](https://union.meituan.com/single/helpCenter?id=44)
 - [美团联盟接口更新通知](https://union.meituan.com/single/announcement/255)
 - [Guzzle](https://github.com/guzzle/guzzle)
+
+<!--
+```shell
+php-cs-fixer fix -v src --rules=@PSR12
+```
+>

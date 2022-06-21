@@ -46,5 +46,4 @@ trait Pagination2Trait
     {
         return $this->setPageSize($limit);
     }
-
 }

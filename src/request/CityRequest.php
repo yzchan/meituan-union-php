@@ -12,11 +12,11 @@ use MeituanUnion\request\traits\PaginationTrait;
  */
 class CityRequest extends Request
 {
+    use BusinessLineTrait;
+    use PaginationTrait;
+
     public static function apiPath(): string
     {
         return '/api/mtunion/city';
     }
-
-    use BusinessLineTrait;
-    use PaginationTrait;
 }

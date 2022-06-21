@@ -57,7 +57,7 @@ class Client
      * @return array
      * @throws GuzzleException|RuntimeException
      */
-    function __call(string $method, array $args): array
+    public function __call(string $method, array $args): array
     {
         $methods = [
             'order' => OrderRequest::apiPath(),

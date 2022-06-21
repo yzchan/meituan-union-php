@@ -16,18 +16,18 @@ use MeituanUnion\request\traits\SkuIdTrait;
  */
 class MiniCodeRequest extends Request
 {
-    public static function apiPath(): string
-    {
-        return '/api/miniCode';
-    }
-
-    const WECHAT = 4;               // 微信小程序Path
-    const YOUXUAN_WXAPP = 8;        // 微信小程序-优选小程序
-
     use SidTrait;
     use ActIdTrait;
     use LinkTypeTrait;
     use CityIdTrait;
     use SkuIdTrait;
     use CategoryIdTrait;
+
+    public static function apiPath(): string
+    {
+        return '/api/miniCode';
+    }
+
+    public const WECHAT = 4;               // 微信小程序Path
+    public const YOUXUAN_WXAPP = 8;        // 微信小程序-优选小程序
 }

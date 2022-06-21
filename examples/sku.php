@@ -1,4 +1,5 @@
 <?php
+
 require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
@@ -13,8 +14,8 @@ try {
     $request = new SkuRequest();
     $request->setBusinessLine(BusinessLine::YOUXUAN);
     $request->setActId(105);
-//    $request->setCityId(1);
-//    $request->setCategoryId(240422);
+    // $request->setCityId(1);
+    // $request->setCategoryId(240422);
     $request->setPageSize(50);
     $request->setPageNo(1);
     echo "\nrequest params: ";

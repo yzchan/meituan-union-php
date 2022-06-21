@@ -12,14 +12,14 @@ use MeituanUnion\request\traits\BusinessLineTrait;
  */
 class OrderRequest extends Request
 {
+    use ActIdTrait;
+
+    use BusinessLineTrait;
+
     public static function apiPath(): string
     {
         return '/api/order';
     }
-
-    use ActIdTrait;
-
-    use BusinessLineTrait;
 
     public $orderId = '';   // 订单ID
     public $full = 0;       // 是否返回完整订单信息(即是否包含返佣、退款信息) 枚举值： 0-非全量查询  1-全量查询

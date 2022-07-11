@@ -2,15 +2,15 @@
 
 namespace MeituanUnion;
 
-use MeituanUnion\request\CategoryRequest;
-use MeituanUnion\request\CityRequest;
 use RuntimeException;
 use GuzzleHttp\Psr7\Stream;
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Exception\GuzzleException;
 use MeituanUnion\request\Request;
 use MeituanUnion\request\SkuRequest;
+use MeituanUnion\request\CityRequest;
+use GuzzleHttp\Client as GuzzleClient;
 use MeituanUnion\request\OrderRequest;
+use GuzzleHttp\Exception\GuzzleException;
+use MeituanUnion\request\CategoryRequest;
 use MeituanUnion\request\MiniCodeRequest;
 use MeituanUnion\request\OrderListRequest;
 use MeituanUnion\request\GenerateLinkRequest;
@@ -35,7 +35,9 @@ const GATEWAY = 'https://openapi.meituan.com';
 class Client
 {
     private $key;
+
     private $secret; // 应用secret
+
     private $callbackSecret; // 回调secret
 
     /**
@@ -46,8 +48,8 @@ class Client
      */
     public function __construct(string $key = "", string $secret = "", string $callbackSecret = "")
     {
-        $this->key = $key;
-        $this->secret = $secret;
+        $this->key            = $key;
+        $this->secret         = $secret;
         $this->callbackSecret = $callbackSecret;
     }
 
@@ -60,14 +62,14 @@ class Client
     public function __call(string $method, array $args): array
     {
         $methods = [
-            'order' => OrderRequest::apiPath(),
-            'orderList' => OrderListRequest::apiPath(),
-            'miniCode' => MiniCodeRequest::apiPath(),
-            'generateUrl' => GenerateLinkRequest::apiPath(),
+            'order'                => OrderRequest::apiPath(),
+            'orderList'            => OrderListRequest::apiPath(),
+            'miniCode'             => MiniCodeRequest::apiPath(),
+            'generateUrl'          => GenerateLinkRequest::apiPath(),
             'getQualityScoreBySid' => GetQualityScoreBySidRequest::apiPath(),
-            'sku' => SkuRequest::apiPath(),
-            'category' => CategoryRequest::apiPath(),
-            'city' => CityRequest::apiPath(),
+            'sku'                  => SkuRequest::apiPath(),
+            'category'             => CategoryRequest::apiPath(),
+            'city'                 => CityRequest::apiPath(),
         ];
         if (in_array($method, array_keys($methods)) && count($args) == 1) {
             return $this->request($methods[$method], $args[0]);
@@ -132,10 +134,10 @@ class Client
     public function request(string $path, array $params): array
     {
         $params['appkey'] = $this->key;
-        $params['ts'] = time();
-        $params['sign'] = $this->sign($params);
+        $params['ts']     = time();
+        $params['sign']   = $this->sign($params);
 
-        $client = new GuzzleClient(['base_uri' => GATEWAY, 'http_errors' => false]);
+        $client   = new GuzzleClient(['base_uri' => GATEWAY, 'http_errors' => false]);
         $response = $client->request('GET', $path, ['query' => $params]);
 
         $body = $response->getBody();

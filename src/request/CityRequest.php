@@ -2,8 +2,8 @@
 
 namespace MeituanUnion\request;
 
-use MeituanUnion\request\traits\BusinessLineTrait;
 use MeituanUnion\request\traits\PaginationTrait;
+use MeituanUnion\request\traits\BusinessLineTrait;
 
 /**
  * 城市信息查询

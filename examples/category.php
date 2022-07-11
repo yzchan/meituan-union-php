@@ -4,8 +4,8 @@ require_once dirname(__FILE__) . '/config.php';
 require_once dirname(__FILE__) . "/../vendor/autoload.php";
 
 use MeituanUnion\BusinessLine;
-use MeituanUnion\request\CategoryRequest;
 use GuzzleHttp\Exception\GuzzleException;
+use MeituanUnion\request\CategoryRequest;
 
 $client = new MeituanUnion\Client(KEY, SECRET, CALLBACK_SECRET);
 

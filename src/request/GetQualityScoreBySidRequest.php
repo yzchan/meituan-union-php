@@ -3,12 +3,12 @@
 namespace MeituanUnion\request;
 
 use MeituanUnion\BusinessLine;
-use MeituanUnion\request\traits\BusinessLineTrait;
-use MeituanUnion\request\traits\CategoryIdTrait;
-use MeituanUnion\request\traits\CityIdTrait;
-use MeituanUnion\request\traits\DateBetweenTrait;
-use MeituanUnion\request\traits\PaginationTrait;
 use MeituanUnion\request\traits\SidTrait;
+use MeituanUnion\request\traits\CityIdTrait;
+use MeituanUnion\request\traits\CategoryIdTrait;
+use MeituanUnion\request\traits\PaginationTrait;
+use MeituanUnion\request\traits\DateBetweenTrait;
+use MeituanUnion\request\traits\BusinessLineTrait;
 
 /**
  * 优选sid质量分&复购率查询
@@ -35,6 +35,7 @@ class GetQualityScoreBySidRequest extends Request
     }
 
     public $type = 1;           // 质量分类型（1表示预估类型、2表示实际类型）
+
     public $promotionType = 2;  // 订单质量分类型：CPS类订单=1；CPA类订单=2(默认)  2022年4月新增，优选CPA、S均提供质量分查询能力
 
     /**

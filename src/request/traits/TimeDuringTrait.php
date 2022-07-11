@@ -5,6 +5,7 @@ namespace MeituanUnion\request\traits;
 trait TimeDuringTrait
 {
     public $startTime = 0;      // 查询起始时间戳（10位），以下单时间为准
+
     public $endTime = 0;        // 查询截止时间戳（10位），以下单时间为准
 
     /**
@@ -34,7 +35,7 @@ trait TimeDuringTrait
     public function setDate(string $date): self
     {
         $this->startTime = strtotime($date);
-        $this->endTime = strtotime($date) + 86400;
+        $this->endTime   = strtotime($date) + 86400;
         return $this;
     }
 
@@ -46,7 +47,7 @@ trait TimeDuringTrait
     public function setTimeBetween(int $startTime, int $endTime): self
     {
         $this->startTime = $startTime;
-        $this->endTime = $endTime;
+        $this->endTime   = $endTime;
         return $this;
     }
 }

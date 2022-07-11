@@ -5,6 +5,7 @@ namespace MeituanUnion\request\traits;
 trait DateBetweenTrait
 {
     public $beginDate = '';     // 查询起始日期格式如：yyyy-mm-dd（注：起始时间应晚于三个月前）
+
     public $endDate = '';       // 查询截止日期格式如：yyyy-mm-dd（注：日期间隔最长为90天）
 
     /**
@@ -35,7 +36,7 @@ trait DateBetweenTrait
     public function setDateBetween(string $beginDate, string $endDate): self
     {
         $this->beginDate = $beginDate;
-        $this->endDate = $endDate;
+        $this->endDate   = $endDate;
         return $this;
     }
 }

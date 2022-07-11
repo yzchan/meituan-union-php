@@ -5,6 +5,7 @@ namespace MeituanUnion\request\traits;
 trait Pagination2Trait
 {
     public $page = 1;
+
     public $limit = 20;
 
     /**

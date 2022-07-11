@@ -3,9 +3,9 @@
 namespace MeituanUnion\request;
 
 use MeituanUnion\request\traits\ActIdTrait;
-use MeituanUnion\request\traits\BusinessLineTrait;
-use MeituanUnion\request\traits\Pagination2Trait;
 use MeituanUnion\request\traits\TimeDuringTrait;
+use MeituanUnion\request\traits\Pagination2Trait;
+use MeituanUnion\request\traits\BusinessLineTrait;
 
 /**
  * 订单列表查询接口

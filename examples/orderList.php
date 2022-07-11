@@ -16,7 +16,7 @@ try {
     $request->setBusinessLine(BusinessLine::WAIMAI);
     $request->setActId(33); // actId和businessLine至少有一个
     $startTime = strtotime('2022-04-04 00:00:00');
-    $endTime = strtotime('2022-04-05 00:00:00'); // 不能超过1天
+    $endTime   = strtotime('2022-04-05 00:00:00'); // 不能超过1天
     // $request->setStartTime($startTime); // 指定开始时间
     // $request->setEndTime($endTime); // 指定结束时间
     $request->setTimeBetween($startTime, $endTime); // 指定时间区间

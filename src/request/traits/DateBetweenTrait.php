@@ -4,9 +4,15 @@ namespace MeituanUnion\request\traits;
 
 trait DateBetweenTrait
 {
-    public $beginDate = '';     // 查询起始日期格式如：yyyy-mm-dd（注：起始时间应晚于三个月前）
+    /**
+     * @var string 查询起始日期格式如：yyyy-mm-dd（注：起始时间应晚于三个月前）
+     */
+    public $beginDate = '';
 
-    public $endDate = '';       // 查询截止日期格式如：yyyy-mm-dd（注：日期间隔最长为90天）
+    /**
+     * @var string 查询截止日期格式如：yyyy-mm-dd（注：日期间隔最长为90天）
+     */
+    public $endDate = '';
 
     /**
      * @param string $beginDate

@@ -45,9 +45,15 @@ class GenerateLinkRequest extends Request
 
     public const YOUXUAN_WXAPP = 8;        // 微信小程序-优选小程序
 
-    public $shortLink = true;       // 长链 or 短链
+    /**
+     * @var bool 是否短链
+     */
+    public $shortLink = true;
 
-    public $poiId = 0;              // 门店信息-目前不起用
+    /**
+     * @var int 门店信息-目前不起用
+     */
+    public $poiId = 0;
 
     /**
      * @param bool $isShortLink

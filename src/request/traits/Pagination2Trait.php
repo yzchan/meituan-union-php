@@ -4,8 +4,14 @@ namespace MeituanUnion\request\traits;
 
 trait Pagination2Trait
 {
+    /**
+     * @var int
+     */
     public $page = 1;
 
+    /**
+     * @var int
+     */
     public $limit = 20;
 
     /**

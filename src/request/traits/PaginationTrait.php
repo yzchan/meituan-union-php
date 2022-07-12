@@ -4,9 +4,15 @@ namespace MeituanUnion\request\traits;
 
 trait PaginationTrait
 {
-    public $pageSize = 20;      // 页大小，默认20，1~100
+    /**
+     * @var int 页大小，1~100 默认20
+     */
+    public $pageSize = 20;
 
-    public $pageNo = 1;         // 第几页，默认：１
+    /**
+     * @var int 第几页
+     */
+    public $pageNo = 1;
 
     /**
      * @param int $pageSize

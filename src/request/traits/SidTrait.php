@@ -4,7 +4,10 @@ namespace MeituanUnion\request\traits;
 
 trait SidTrait
 {
-    public $sid = '';   // 推广位sid
+    /**
+     * @var string 推广位sid
+     */
+    public $sid = '';
 
     /**
      * @param string $sid

@@ -37,6 +37,8 @@ class OrderListRequest extends Request
         return $params;
     }
 
-    // 查询时间类型 目前只能按订单支付时间查询
+    /**
+     * @var int 查询时间类型 目前只能按订单支付时间查询
+     */
     public $queryTimeType = 1;
 }

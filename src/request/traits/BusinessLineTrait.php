@@ -4,7 +4,10 @@ namespace MeituanUnion\request\traits;
 
 trait BusinessLineTrait
 {
-    public $businessLine = 0;   // 业务线
+    /**
+     * @var int 业务线
+     */
+    public $businessLine = 0;
 
     /**
      * @param int $businessLine

@@ -4,9 +4,15 @@ namespace MeituanUnion\request\traits;
 
 trait TimeDuringTrait
 {
-    public $startTime = 0;      // 查询起始时间戳（10位），以下单时间为准
+    /**
+     * @var int 查询起始时间戳（10位），以下单时间为准
+     */
+    public $startTime = 0;
 
-    public $endTime = 0;        // 查询截止时间戳（10位），以下单时间为准
+    /**
+     * @var int 查询截止时间戳（10位），以下单时间为准
+     */
+    public $endTime = 0;
 
     /**
      * @param int $time

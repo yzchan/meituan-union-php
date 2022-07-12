@@ -4,7 +4,10 @@ namespace MeituanUnion\request\traits;
 
 trait CategoryIdTrait
 {
-    public $categoryId = 0;         // 2022年4月新增商品类目ID 目前仅优选业务线单品推广使用
+    /**
+     * @var int 2022年4月新增商品类目ID 目前仅优选业务线单品推广使用
+     */
+    public $categoryId = 0;
 
     /**
      * @param int $categoryId

@@ -11,11 +11,11 @@ abstract class Request
         return (array)$this;
     }
 
-    public function beforeRequest()
+    public function beforeRequest(): void
     {
     }
 
-    public function afterRequest()
+    public function afterRequest(): void
     {
     }
 }

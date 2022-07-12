@@ -34,9 +34,15 @@ class GetQualityScoreBySidRequest extends Request
         $this->setBusinessLine(BusinessLine::YOUXUAN);
     }
 
-    public $type = 1;           // 质量分类型（1表示预估类型、2表示实际类型）
+    /**
+     * @var int 质量分类型（1表示预估类型、2表示实际类型）
+     */
+    public $type = 1;
 
-    public $promotionType = 2;  // 订单质量分类型：CPS类订单=1；CPA类订单=2(默认)  2022年4月新增，优选CPA、S均提供质量分查询能力
+    /**
+     * @var int 订单质量分类型：CPS类订单=1；CPA类订单=2(默认)  2022年4月新增，优选CPA、S均提供质量分查询能力
+     */
+    public $promotionType = 2;
 
     /**
      * 质量分类型（1表示预估类型、2表示实际类型）

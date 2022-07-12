@@ -21,11 +21,20 @@ class OrderRequest extends Request
         return '/api/order';
     }
 
-    public $orderId = '';   // 订单ID
+    /**
+     * @var string 订单ID
+     */
+    public $orderId = '';
 
-    public $full = 0;       // 是否返回完整订单信息(即是否包含返佣、退款信息) 枚举值： 0-非全量查询  1-全量查询
+    /**
+     * @var int 是否返回完整订单信息(即是否包含返佣、退款信息) 枚举值： 0-非全量查询  1-全量查询
+     */
+    public $full = 0;
 
-    public $productId = ''; // 商品ID 美团电商（团好货）业务在单订单查询必须
+    /**
+     * @var string 商品ID 美团电商（团好货）业务在单订单查询必须
+     */
+    public $productId = '';
 
     /**
      * @param string $orderId

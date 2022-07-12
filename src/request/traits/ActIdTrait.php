@@ -4,7 +4,10 @@ namespace MeituanUnion\request\traits;
 
 trait ActIdTrait
 {
-    public $actId = 0;  // 活动id
+    /**
+     * @var int 活动id
+     */
+    public $actId = 0;
 
     /**
      * @param int $actId

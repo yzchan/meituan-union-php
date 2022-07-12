@@ -34,11 +34,20 @@ const GATEWAY = 'https://openapi.meituan.com';
  */
 class Client
 {
+    /**
+     * @var string
+     */
     private $key;
 
-    private $secret; // 应用secret
+    /**
+     * @var string 应用secret
+     */
+    private $secret;
 
-    private $callbackSecret; // 回调secret
+    /**
+     * @var string 回调secret
+     */
+    private $callbackSecret;
 
     /**
      * Client constructor.
@@ -107,7 +116,7 @@ class Client
     {
         $sign = $params['sign'];
         if (isset($params['tradeTypeList'])) { // 优选订单回推验签处理
-            $params['tradeTypeList'] = json_encode($params['tradeTypeList'], true);
+            $params['tradeTypeList'] = json_encode($params['tradeTypeList']);
         }
         return $this->sign($params, true) === $sign;
     }
@@ -149,6 +158,6 @@ class Client
             throw new RuntimeException("json_decode error : " . json_last_error_msg() . ". {$body}\n");
         }
 
-        return $data;
+        return (array)$data;
     }
 }

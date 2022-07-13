@@ -22,10 +22,29 @@
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.0"
     },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.4.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "MeituanUnion\\": "src/"
         }
+    },
+    "scripts": {
+        "update-php-cs-fixer": ["composer bin php-cs-fixer update"],
+        "update-phpstan": ["composer bin phpstan update"],
+        "update-psalm": ["composer bin psalm update"],
+
+        "php-cs-fixer": ["vendor/bin/php-cs-fixer fix -vvv --diff --config=\".php-cs-fixer.php\""],
+        "phpstan": ["vendor/bin/phpstan.phar analyse -c phpstan.dist.neon"],
+        "psalm": ["vendor/bin/psalm.phar -c psalm.xml src"]
     },
     "repositories": {
         "packagist": {

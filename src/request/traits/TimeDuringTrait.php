@@ -40,8 +40,12 @@ trait TimeDuringTrait
      */
     public function setDate(string $date): self
     {
-        $this->startTime = strtotime($date);
-        $this->endTime   = strtotime($date) + 86400;
+        $time = strtotime($date);
+        if ($time === false) {
+            $time = time();
+        }
+        $this->startTime = $time;
+        $this->endTime   = $time + 86400;
         return $this;
     }
 

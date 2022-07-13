@@ -153,11 +153,11 @@ class Client
         if ($body instanceof Stream) {
             $body = $body->getContents();
         }
-        $data = json_decode($body, true);
+        $data = json_decode((string)$body, true);
         if ($data == false) {
             throw new RuntimeException("json_decode error : " . json_last_error_msg() . ". {$body}\n");
         }
 
-        return (array)$data;
+        return $data;
     }
 }

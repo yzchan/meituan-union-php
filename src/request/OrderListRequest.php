@@ -27,7 +27,7 @@ class OrderListRequest extends Request
     public function asArray(): array
     {
         // 当actId或businessLine未设置时，从请求参数中去除
-        $params = (array)$this;
+        $params = get_object_vars($this);
         if ($params['actId'] == 0) {
             unset($params['actId']);
         }

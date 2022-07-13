@@ -8,7 +8,7 @@ abstract class Request
 
     public function asArray(): array
     {
-        return (array)$this;
+        return get_object_vars($this);
     }
 
     public function beforeRequest(): void

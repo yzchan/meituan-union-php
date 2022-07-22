@@ -6,6 +6,9 @@ abstract class Request
 {
     abstract public static function apiPath(): string;
 
+    /**
+     * @return array<string, int|string>
+     */
     public function asArray(): array
     {
         return get_object_vars($this);

@@ -5,6 +5,7 @@ namespace MeituanUnion;
 use RuntimeException;
 use GuzzleHttp\Psr7\Stream;
 use MeituanUnion\request\Request;
+use MeituanUnion\request\PoiRequest;
 use MeituanUnion\request\SkuRequest;
 use MeituanUnion\request\CityRequest;
 use GuzzleHttp\Client as GuzzleClient;
@@ -31,6 +32,7 @@ const GATEWAY = 'https://openapi.meituan.com';
  * @method array getQualityScoreBySid(array $params) 优选sid质量分&复购率查询
  * @method array category(array $params) 商品类目查询
  * @method array city(array $params) 城市信息查询
+ * @method array poi(array $params) 门店POI查询
  */
 class Client
 {
@@ -64,7 +66,7 @@ class Client
 
     /**
      * @param string $method
-     * @param array $args
+     * @param  array<array-key, array<string, int|string|false>>  $args
      * @return array
      * @throws GuzzleException|RuntimeException
      */
@@ -79,6 +81,7 @@ class Client
             'sku'                  => SkuRequest::apiPath(),
             'category'             => CategoryRequest::apiPath(),
             'city'                 => CityRequest::apiPath(),
+            'poi'                  => PoiRequest::apiPath(),
         ];
         if (in_array($method, array_keys($methods)) && count($args) == 1) {
             return $this->request($methods[$method], $args[0]);
@@ -90,7 +93,7 @@ class Client
 
     /**
      * 生成签名算法
-     * @param array $params
+     * @param array<string, int|string|false> $params
      * @param bool $isCallback true回调验证使用，false接口验证
      * @return string
      */
@@ -101,7 +104,7 @@ class Client
         ksort($params);
         $str = $secret; // $secret为分配的密钥
         foreach ($params as $key => $value) {
-            $str .= $key . $value;
+            $str .= $key . (string)$value;
         }
         $str .= $secret;
         return md5($str);
@@ -109,7 +112,7 @@ class Client
 
     /**
      * 验证回调结果
-     * @param array $params
+     * @param array<string, int|string|false> $params
      * @return bool
      */
     public function validateCallback(array $params): bool
@@ -136,7 +139,7 @@ class Client
 
     /**
      * @param string $path
-     * @param array $params
+     * @param array<string, int|string|false> $params
      * @return array
      * @throws GuzzleException|RuntimeException
      */
@@ -158,6 +161,6 @@ class Client
             throw new RuntimeException("json_decode error : " . json_last_error_msg() . ". {$body}\n");
         }
 
-        return $data;
+        return (array)$data;
     }
 }

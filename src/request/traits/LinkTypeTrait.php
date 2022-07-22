@@ -7,7 +7,7 @@ trait LinkTypeTrait
     /**
      * @var int
      */
-    public $linkType;    // 投放链接的类型
+    public $linkType = 0;    // 投放链接的类型
 
     /**
      * @param int $linkType

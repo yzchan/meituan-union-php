@@ -44,7 +44,7 @@
 
         "php-cs-fixer": ["vendor/bin/php-cs-fixer fix -vvv --diff --config=\".php-cs-fixer.php\""],
         "phpstan": ["vendor/bin/phpstan.phar analyse -c phpstan.dist.neon"],
-        "psalm": ["vendor/bin/psalm.phar -c psalm.xml src"]
+        "psalm": ["vendor/bin/psalm.phar --show-info=true -c psalm.xml src"]
     },
     "repositories": {
         "packagist": {

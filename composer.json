@@ -23,7 +23,8 @@
         "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
-        "bamarni/composer-bin-plugin": "^1.4.1"
+        "bamarni/composer-bin-plugin": "^1.4.1",
+        "phpunit/phpunit": "^9.0"
     },
     "config": {
         "allow-plugins": {
@@ -37,6 +38,11 @@
             "MeituanUnion\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "MeituanUnion\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
         "update-php-cs-fixer": ["composer bin php-cs-fixer update"],
         "update-phpstan": ["composer bin phpstan update"],
@@ -46,10 +52,10 @@
         "phpstan": ["vendor/bin/phpstan.phar analyse -c phpstan.dist.neon"],
         "psalm": ["vendor/bin/psalm.phar --show-info=true -c psalm.xml src"]
     },
-    "repositories": {
-        "packagist": {
+    "repositories": [
+        {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer/"
         }
-    }
+    ]
 }
